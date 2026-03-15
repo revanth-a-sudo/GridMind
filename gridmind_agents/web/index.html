@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridMind – Autonomous Smart Grid Control System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header-title">⚡ GridMind – Autonomous Smart Grid Control System</h1>
+      <div class="header-meta">
+        <span class="live-dot"></span>
+        <span class="live-label">LIVE</span>
+        <span class="timestamp" id="timestamp">--:--:--</span>
+      </div>
+    </header>
+
+    <!-- 1. Grid Health Indicators -->
+    <section class="panel panel-health" aria-label="Grid health indicators">
+      <h2 class="panel-title">Grid Health Indicators</h2>
+      <div class="health-cards">
+        <div class="health-card">
+          <span class="health-label">Frequency (Hz)</span>
+          <span class="health-value" id="indicator-frequency">--</span>
+        </div>
+        <div class="health-card">
+          <span class="health-label">Voltage (p.u.)</span>
+          <span class="health-value" id="indicator-voltage">--</span>
+        </div>
+        <div class="health-card">
+          <span class="health-label">Risk Score</span>
+          <span class="health-value health-value-risk" id="indicator-risk">--</span>
+        </div>
+        <div class="health-card health-card-status">
+          <span class="health-label">Grid Status</span>
+          <span class="health-value health-value-status" id="indicator-status">--</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Live Power Flow Chart -->
+    <section class="panel panel-chart" aria-label="Live power flow">
+      <h2 class="panel-title">Live Power Flow</h2>
+      <div class="chart-wrap">
+        <canvas id="chartPowerFlow" role="img" aria-label="Power flow line chart"></canvas>
+      </div>
+    </section>
+
+    <!-- 3. Grid Topology Graph -->
+    <section class="panel panel-topology" aria-label="Grid topology">
+      <h2 class="panel-title">Grid Topology</h2>
+      <div class="topology-wrap">
+        <canvas id="canvasTopology" width="400" height="280"></canvas>
+      </div>
+    </section>
+
+    <!-- 4. Agent Decision Log -->
+    <section class="panel panel-log" aria-label="Agent decision log">
+      <div class="panel-title-row">
+        <h2 class="panel-title">Agent Decision Log</h2>
+        <button type="button" class="btn-download" id="btnDownloadReport" title="Download action log as Excel-friendly CSV">Download Excel report</button>
+      </div>
+      <div class="log-wrap">
+        <ul class="log-list" id="logList">
+          <li class="log-item log-placeholder">Waiting for agent decisions…</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
